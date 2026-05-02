@@ -1,0 +1,1 @@
+"""KaiRA connpass event reminder."""

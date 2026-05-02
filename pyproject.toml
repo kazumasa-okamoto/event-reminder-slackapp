@@ -1,0 +1,19 @@
+[project]
+name = "kaira-event-reminder"
+version = "0.1.0"
+description = "Post same-day KaiRA connpass events to Slack."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ruff>=0.15.12",
+]
+
+[project.scripts]
+kaira-event-reminder = "kaira_event_reminder.main:main"
+
+[build-system]
+requires = ["uv_build>=0.10.0,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+package = true
