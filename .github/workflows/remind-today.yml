@@ -3,8 +3,8 @@ name: Remind today's KaiRA events
 on:
   workflow_dispatch:
   schedule:
-    # 08:30 JST every day.
-    - cron: "30 23 * * *"
+    # 08:00 JST every day.
+    - cron: "0 23 * * *"
 
 jobs:
   remind:

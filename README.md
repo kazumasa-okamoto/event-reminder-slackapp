@@ -23,7 +23,7 @@ GitHub リポジトリの `Settings` -> `Secrets and variables` -> `Actions` に
 
 ## GitHub Actions
 
-[`.github/workflows/remind-today.yml`](.github/workflows/remind-today.yml) が毎日 08:30 JST に実行されます。
+[`.github/workflows/remind-today.yml`](.github/workflows/remind-today.yml) が毎日 08:00 JST に実行されます。
 
 当日の KaiRA イベントがない場合は Slack には何も投稿せず、Actions のログに `No KaiRA events today (...)` を出して正常終了します。
 
