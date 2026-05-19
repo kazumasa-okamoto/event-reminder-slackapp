@@ -148,7 +148,8 @@ def extract_google_meet_url(description_html: str) -> str | None:
 
 def build_slack_text(event: Event) -> str:
     lines = [
-        "<!channel> 本日開催です！",
+        "<!channel>", 
+        "こちら本日開催です！",
         f"- イベント名: {event.title}",
         f"- 場所: {event.place}",
         f"- connpass: {event.url}",
