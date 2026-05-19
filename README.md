@@ -5,7 +5,8 @@ KaiRA の connpass グループで本日開催されるイベントを取得し�
 投稿例:
 
 ```text
-<!channel> 本日開催です！
+<!channel>
+こちら本日開催です！
 - イベント名: KaiRA 論文読み会
 - 場所: オンライン
 - connpass: https://kaira-thesis-reading.connpass.com/event/123456/
