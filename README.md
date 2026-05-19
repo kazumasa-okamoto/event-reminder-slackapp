@@ -1,6 +1,6 @@
 # KaiRA Event Reminder Slack App
 
-KaiRA の connpass グループで本日開催されるイベントを取得し、Slack Incoming Webhook に当日リマインドを送信します。
+[京都大学人工知能研究会 KaiRA](https://kyoto-kaira.github.io/) の connpass グループで本日開催されるイベントを取得し、Slack Incoming Webhook に当日リマインドを送信します。
 
 投稿例:
 
