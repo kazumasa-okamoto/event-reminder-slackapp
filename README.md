@@ -7,10 +7,10 @@
 ```text
 <!channel>
 こちら本日開催です！
-- イベント名: KaiRA 論文読み会
-- 場所: オンライン
-- connpass: https://kaira-thesis-reading.connpass.com/event/123456/
-- Google Meet: https://meet.google.com/abc-defg-hij
+• イベント名: KaiRA 論文読み会
+• 場所: オンライン
+• connpass: https://kaira-thesis-reading.connpass.com/event/123456/
+• Google Meet: https://meet.google.com/abc-defg-hij
 ```
 
 connpass の公開されているイベント本文に Google Meet のリンクが含まれている場合は、投稿に `Google Meet` の行も追加します。参加者限定情報など API の本文に含まれないリンクは取得できません。

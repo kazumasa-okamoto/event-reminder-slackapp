@@ -28,11 +28,12 @@ class MainTest(unittest.TestCase):
             build_slack_text(event),
             "\n".join(
                 [
-                    "<!channel> 本日開催です！",
-                    "- イベント名: KaiRA 論文読み会",
-                    "- 場所: オンライン",
-                    "- connpass: https://kaira-thesis-reading.connpass.com/event/123456/",
-                    "- Google Meet: https://meet.google.com/abc-defg-hij",
+                    "<!channel>",
+                    "こちら本日開催です！",
+                    "• イベント名: KaiRA 論文読み会",
+                    "• 場所: オンライン",
+                    "• connpass: https://kaira-thesis-reading.connpass.com/event/123456/",
+                    "• Google Meet: https://meet.google.com/abc-defg-hij",
                 ]
             ),
         )
