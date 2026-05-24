@@ -2,7 +2,16 @@ import unittest
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-from kaira_event_reminder.main import Event, build_slack_text, extract_google_meet_url, format_place, parse_datetime
+from kaira_event_reminder.main import (
+    READING_WEBHOOK_ENV,
+    TECH_WEBHOOK_ENV,
+    Event,
+    build_slack_text,
+    extract_google_meet_url,
+    format_place,
+    parse_datetime,
+    target_webhook_env_name,
+)
 
 
 class MainTest(unittest.TestCase):
@@ -44,6 +53,26 @@ class MainTest(unittest.TestCase):
 
     def test_extract_google_meet_url_returns_none_when_missing(self) -> None:
         self.assertIsNone(extract_google_meet_url("<p>オンライン開催です</p>"))
+
+    def test_target_webhook_env_name_for_reading_event(self) -> None:
+        event = Event(
+            title="KaiRA 論文輪読会",
+            place="オンライン",
+            url="https://example.com",
+            started_at=datetime(2026, 5, 24, 8, 0, tzinfo=ZoneInfo("Asia/Tokyo")),
+        )
+
+        self.assertEqual(target_webhook_env_name(event), READING_WEBHOOK_ENV)
+
+    def test_target_webhook_env_name_for_tech_event(self) -> None:
+        event = Event(
+            title="KaiRA 技術勉強会",
+            place="オンライン",
+            url="https://example.com",
+            started_at=datetime(2026, 5, 24, 8, 0, tzinfo=ZoneInfo("Asia/Tokyo")),
+        )
+
+        self.assertEqual(target_webhook_env_name(event), TECH_WEBHOOK_ENV)
 
 
 if __name__ == "__main__":

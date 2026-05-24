@@ -19,6 +19,9 @@ DEFAULT_SUBDOMAIN = "kaira-thesis-reading"
 DEFAULT_TIMEZONE = "Asia/Tokyo"
 USER_AGENT = "kaira-event-reminder/0.1 (+https://github.com/)"
 GOOGLE_MEET_URL_PATTERN = re.compile(r"https?://meet\.google\.com/[a-z0-9-]+", re.IGNORECASE)
+READING_EVENT_KEYWORD = "輪読会"
+READING_WEBHOOK_ENV = "SLACK_WEBHOOK_URL_EVENT_READING"
+TECH_WEBHOOK_ENV = "SLACK_WEBHOOK_URL_EVENT_TECH"
 
 
 @dataclass(frozen=True)
@@ -159,6 +162,17 @@ def build_slack_text(event: Event) -> str:
     return "\n".join(lines)
 
 
+def target_webhook_env_name(event: Event) -> str:
+    if READING_EVENT_KEYWORD in event.title:
+        return READING_WEBHOOK_ENV
+    return TECH_WEBHOOK_ENV
+
+
+def resolve_webhook_url(event: Event) -> tuple[str, str]:
+    env_name = target_webhook_env_name(event)
+    return require_env(env_name), env_name
+
+
 def post_to_slack(webhook_url: str, text: str) -> None:
     request_text(
         webhook_url,
@@ -179,15 +193,17 @@ def run(dry_run: bool = False) -> int:
         print(f"No KaiRA events today ({today.date().isoformat()}).")
         return 0
 
-    webhook_url = None if dry_run else require_env("SLACK_WEBHOOK_URL")
     for event in events:
         text = build_slack_text(event)
+        target_env_name = target_webhook_env_name(event)
         if dry_run:
+            print(f"Target: {target_env_name}")
             print(text)
             print()
         else:
-            post_to_slack(webhook_url or "", text)
-            print(f"Posted: {event.title}")
+            webhook_url, env_name = resolve_webhook_url(event)
+            post_to_slack(webhook_url, text)
+            print(f"Posted to {env_name}: {event.title}")
 
     return 0
 

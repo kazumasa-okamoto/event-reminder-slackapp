@@ -24,7 +24,8 @@ jobs:
       - name: Post reminder
         env:
           CONNPASS_API_KEY: ${{ secrets.CONNPASS_API_KEY }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL_EVENT_READING: ${{ secrets.SLACK_WEBHOOK_URL_EVENT_READING }}
+          SLACK_WEBHOOK_URL_EVENT_TECH: ${{ secrets.SLACK_WEBHOOK_URL_EVENT_TECH }}
           CONNPASS_SUBDOMAIN: kaira-thesis-reading
           TZ: Asia/Tokyo
         run: uv run --locked kaira-event-reminder

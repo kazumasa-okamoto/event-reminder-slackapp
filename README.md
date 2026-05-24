@@ -20,7 +20,10 @@ connpass の公開されているイベント本文に Google Meet のリンク�
 GitHub リポジトリの `Settings` -> `Secrets and variables` -> `Actions` に次を登録してください。
 
 - `CONNPASS_API_KEY`: connpass API v2 の API キー
-- `SLACK_WEBHOOK_URL`: Slack Incoming Webhook URL
+- `SLACK_WEBHOOK_URL_EVENT_READING`: `event_reading` 用の Slack Incoming Webhook URL
+- `SLACK_WEBHOOK_URL_EVENT_TECH`: `event_tech` 用の Slack Incoming Webhook URL
+
+イベント名に `輪読会` が含まれる場合は `SLACK_WEBHOOK_URL_EVENT_READING` に、それ以外は `SLACK_WEBHOOK_URL_EVENT_TECH` に投稿します。
 
 ## GitHub Actions
 
